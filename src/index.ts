@@ -1,6 +1,8 @@
 import express from 'express';
+import basicAuthenticationMiddleware from './middlewares/basic-authentication.middleware';
 import errorHandler from './middlewares/error-handler.middleware';
-import usersRoute from './routes/users.routes';
+import authorizationRoute from './routes/authorization.route';
+import usersRoute from './routes/users.route';
 
 const app = express();
 
@@ -10,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes settings
 app.use(usersRoute);
+app.use(authorizationRoute);
 
 // Errors handlers settings
 app.use(errorHandler);
